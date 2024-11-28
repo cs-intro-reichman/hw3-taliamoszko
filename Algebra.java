@@ -133,6 +133,6 @@ public class Algebra {
         while (times(result, result) <= x) {
             result++;
         }
-        return result;
+        return minus(result, 1);
     }
 }
