@@ -1,4 +1,3 @@
-/** Functions for checking if a given string is an anagram. */
 import java.util.Random;
 
 public class Anagram {
@@ -69,7 +68,7 @@ public class Anagram {
     // The random anagram consists of the same characters as the given string, rearranged randomly.
     public static String randomAnagram(String str) {
         // We will work directly with the string and remove characters as we go
-        String remainingChars = str;
+        String remainingChars = preProcess(str);  // Preprocess to remove unwanted characters
         String result = "";
         Random rand = new Random();
 
@@ -88,3 +87,4 @@ public class Anagram {
         return result;
     }
 }
+
