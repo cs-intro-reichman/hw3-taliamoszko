@@ -40,21 +40,14 @@ public class Anagram {
             return false;
         }
 
-        // Check if both strings contain the same characters
-        for (int i = 0; i < str1.length(); i++) {
-            boolean found = false;
-            for (int j = 0; j < str2.length(); j++) {
-                if (str1.charAt(i) == str2.charAt(j)) {
-                    found = true;
-                    str2 = str2.substring(0, j) + str2.substring(j + 1);  // Remove the character from str2
-                    break;
-                }
-            }
-            if (!found) {
-                return false;  // If no matching character is found, not an anagram
-            }
-        }
-        return true;
+        // Sort both strings and compare them
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+        java.util.Arrays.sort(charArray1);
+        java.util.Arrays.sort(charArray2);
+
+        // Compare the sorted arrays
+        return new String(charArray1).equals(new String(charArray2));
     }
 
     // Returns a preprocessed version of the given string: 
