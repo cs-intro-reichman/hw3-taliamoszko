@@ -26,6 +26,10 @@ public class Anagram {
             if (!pass) break;
         }
         System.out.println(pass ? "test passed" : "test Failed");
+
+        // Additional Test 5 for complex anagram
+        boolean test5 = isAnagram("William Shakespeare", "I am a weakish speller");
+        System.out.println("Test 5 (complex anagram): " + (test5 ? "PASS" : "FAIL"));
     }
 
     // Returns true if the two given strings are anagrams, false otherwise.
@@ -39,9 +43,11 @@ public class Anagram {
             return false;
         }
 
-        // Sort both strings and compare them
+        // Convert both strings to character arrays
         char[] charArray1 = str1.toCharArray();
         char[] charArray2 = str2.toCharArray();
+
+        // Sort both arrays
         java.util.Arrays.sort(charArray1);
         java.util.Arrays.sort(charArray2);
 
@@ -49,16 +55,16 @@ public class Anagram {
         return new String(charArray1).equals(new String(charArray2));
     }
 
-    // Returns a preprocessed version of the given string: 
-    // all letter characters are converted to lower-case, 
+    // Returns a preprocessed version of the given string:
+    // all letter characters are converted to lower-case,
     // and all other characters (except spaces) are deleted.
     public static String preProcess(String str) {
         String result = "";
-        // Convert the string to lowercase and only add letters or spaces to the result string
+        // Convert the string to lowercase and only add letters to the result string
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
-            if (Character.isLetter(c) || c == ' ') {
-                result += Character.toLowerCase(c);  // Add the character to result
+            if (Character.isLetter(c)) { // Only add letters (ignore spaces and punctuation)
+                result += Character.toLowerCase(c);
             }
         }
         return result;
@@ -87,4 +93,3 @@ public class Anagram {
         return result;
     }
 }
-
